@@ -3,38 +3,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C54343"
     tools:context=".RestaurantesFragment">
 
-    <Button
-        android:id="@+id/buttonBaixaDoPorto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/botaoBaixaDoPorto"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginBottom="50dp"
-        android:text="Baixa do Porto" />
+        android:background="@drawable/botao_branco_restaurantes">
 
-    <Button
-        android:id="@+id/buttonTerco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/foto_baixa_porto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/img" />
+
+        <TextView
+            android:id="@+id/textViewBaixaPorto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="33dp"
+            android:layout_toEndOf="@+id/foto_baixa_porto"
+            android:text="Baixa do Porto"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <android.widget.Button
+        android:id="@+id/botaoTerco"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="Terco" />
+        android:layout_marginTop="80dp"
+        android:paddingStart="100dp"
+        android:paddingEnd="50dp"
+        android:background="@drawable/botao_branco_restaurantes"
+        android:text="Terço"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/buttonHospital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <android.widget.Button
+        android:id="@+id/botaoHospital"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        android:text="Hospital de Joaquim Urbano" />
+        android:layout_marginTop="200dp"
+        android:paddingStart="100dp"
+        android:paddingEnd="50dp"
+        android:background="@drawable/botao_branco_restaurantes"
+        android:text="Hospital de Joaquim Urbano"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/buttonPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <android.widget.Button
+        android:id="@+id/botaoPerfil"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="right|top"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:text="Perfil" />
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/botao_redondo"
+        android:text="Perfil"
+        android:textColor="#FFFFFF" />
 </FrameLayout>

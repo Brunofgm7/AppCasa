@@ -14,9 +14,9 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var LoginFragment: LoginFragment
-    lateinit var RegistoFragment: RegistoFragment
-    lateinit var LoggedInFragment: LoggedInFragment
+    lateinit var loginFragment: LoginFragment
+    lateinit var registoFragment: RegistoFragment
+    lateinit var restaurantesFragment: RestaurantesFragment
     private var backPressedTime: Long = 0
     lateinit var backToast: Toast
 
@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        LoggedInFragment = LoggedInFragment()
-        LoginFragment = LoginFragment()
+        restaurantesFragment = RestaurantesFragment()
+        loginFragment = LoginFragment()
         verificarToken()
 
     }
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val token = getSharedPreferences("token", MODE_PRIVATE).getString("token", null)
 
         if(token == "") {
-            mudarFragment(LoginFragment)
+            mudarFragment(loginFragment)
         } else {
 
             val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
@@ -44,20 +44,17 @@ class MainActivity : AppCompatActivity() {
             requestCall.enqueue(object: Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if(response.isSuccessful) {
-                        mudarFragment(LoggedInFragment)
+                        mudarFragment(restaurantesFragment)
                     } else {
-                        mudarFragment(LoginFragment)
+                        mudarFragment(loginFragment)
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Toast.makeText(this@MainActivity,"Erro a verificar o token: $t", Toast.LENGTH_SHORT).show()
                 }
-
             })
-
         }
-
     }
 
     private fun mudarFragment(fragment: Fragment) {
@@ -70,12 +67,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         backToast = Toast.makeText(this, "Prima BACK novamente para sair.", Toast.LENGTH_SHORT)
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel()
-            super.onBackPressed()
-            return
-        } else {
-            backToast.show()
+        when {
+            supportFragmentManager.backStackEntryCount > 0 -> {
+                supportFragmentManager.popBackStack()
+            }
+            backPressedTime + 2000 > System.currentTimeMillis() -> {
+                backToast.cancel()
+                super.onBackPressed()
+                return
+            }
+            else -> {
+                backToast.show()
+            }
         }
         backPressedTime = System.currentTimeMillis()
     }

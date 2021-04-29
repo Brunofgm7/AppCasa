@@ -21,4 +21,8 @@ interface EndPointsService {
             @Header("Cookie" ) token: String
     ): Call<ResponseBody>
 
+    @GET("/api/item")
+    fun getItem(): Call<List<Item>>
+
+
 }

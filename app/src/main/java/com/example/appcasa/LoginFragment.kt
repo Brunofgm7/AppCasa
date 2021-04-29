@@ -23,8 +23,7 @@ class LoginFragment : Fragment() {
     lateinit var botaoAindaNaoTemConta: TextView
     lateinit var botaoLogin: Button
     lateinit var botaoForgotYourPassword : TextView
-    lateinit var loggedInFragment: LoggedInFragment
-
+    lateinit var restaurantesFragment: RestaurantesFragment
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -39,7 +38,7 @@ class LoginFragment : Fragment() {
         botaoAindaNaoTemConta = view.findViewById(R.id.textViewNaoPossuiContaRegistar)
         botaoLogin = view.findViewById(R.id.botaoLogin)
 //        botaoForgotYourPassword = view.findViewById(R.id.botaoForgotYourPassword)
-        loggedInFragment = LoggedInFragment()
+        restaurantesFragment = RestaurantesFragment()
 
         botaoAindaNaoTemConta.setOnClickListener {
             val registoFragment = RegistoFragment()
@@ -79,8 +78,7 @@ class LoginFragment : Fragment() {
                                 val preferences: SharedPreferences = activity!!.getSharedPreferences("token", MODE_PRIVATE)
                                 preferences.edit().putString("token", "token="+loginResponse.getToken()).apply()
 
-                                mudarFragment(loggedInFragment)
-
+                                mudarFragment(restaurantesFragment)
                             }
                         }
                     } else {
@@ -100,10 +98,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun mudarFragment(fragment: Fragment) {
-        requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, fragment)
-                .addToBackStack(null)
-                .commit()
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
     }
 
 }

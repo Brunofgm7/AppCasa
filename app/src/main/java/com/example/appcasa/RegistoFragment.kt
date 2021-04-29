@@ -93,7 +93,6 @@ class RegistoFragment : Fragment() {
     private fun mudarFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.frame_layout, fragment)
-                .addToBackStack(null)
                 .commit()
     }
 }
