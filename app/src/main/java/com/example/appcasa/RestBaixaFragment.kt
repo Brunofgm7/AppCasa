@@ -22,7 +22,6 @@ class RestBaixaFragment : Fragment() {
     lateinit var botaoAdicionarItem: Button
     lateinit var adicionarItemFragment: AdicionarItemFragment
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_rest_baixa, container, false)
@@ -32,11 +31,11 @@ class RestBaixaFragment : Fragment() {
         botaoAdicionarItem = view.findViewById(R.id.botaoAdicionarItem)
         botaoAdicionarItem.setOnClickListener {
             mudarFragment(adicionarItemFragment)
-            listaFiltradaItem.clear()
         }
 
         recyclerView = view.findViewById(R.id.recyclerViewItensBaixa)
 
+        listaFiltradaItem.clear()
         carregarItens()
 
         return view
@@ -49,7 +48,6 @@ class RestBaixaFragment : Fragment() {
         itemAdapter = ItemAdapter(listaItem)
 
         val clientesService = ServiceBuilder.buildService(EndPointsService::class.java)
-
         val requestCall = clientesService.getItem()
 
         requestCall.enqueue(object : Callback<List<Item>> {

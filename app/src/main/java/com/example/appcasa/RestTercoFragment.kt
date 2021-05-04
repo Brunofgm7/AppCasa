@@ -32,11 +32,11 @@ class RestTercoFragment : Fragment() {
         botaoAdicionarItem = view.findViewById(R.id.botaoAdicionarItem)
         botaoAdicionarItem.setOnClickListener {
             mudarFragment(adicionarItemFragment)
-            listaFiltradaItem.clear()
         }
 
         recyclerView = view.findViewById(R.id.recyclerViewItensTerco)
 
+        listaFiltradaItem.clear()
         carregarItens()
 
         return view

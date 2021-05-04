@@ -2,14 +2,12 @@ package com.example.appcasa
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.RelativeLayout
 
 class RestaurantesFragment : Fragment() {
@@ -32,16 +30,22 @@ class RestaurantesFragment : Fragment() {
 
         botaoBaixaDoPorto = view.findViewById(R.id.botaoBaixaDoPorto)
         botaoBaixaDoPorto.setOnClickListener {
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            preferences.edit().putString("restaurante", "Baixa").apply()
             mudarFragment(restBaixaFragment)
         }
 
         botaoTerco = view.findViewById(R.id.botaoTerco)
         botaoTerco.setOnClickListener {
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            preferences.edit().putString("restaurante", "Terço").apply()
             mudarFragment(restTercoFragment)
         }
 
         botaoHospital = view.findViewById(R.id.botaoHospital)
         botaoHospital.setOnClickListener {
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            preferences.edit().putString("restaurante", "Ju").apply()
             mudarFragment(restHospitalFragment)
         }
 

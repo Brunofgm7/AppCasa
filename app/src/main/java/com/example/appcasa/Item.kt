@@ -4,7 +4,7 @@ class Item (
 
     var id: String,
     var name: String,
-    var numero: Int,
+    var numero: String,
     var stock: String,
     var notas: String
 

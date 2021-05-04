@@ -1,10 +1,16 @@
 package com.example.appcasa
 
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+
 
 class ItemAdapter(val listaItem: List<Item>) : RecyclerView.Adapter<ItemAdapter.ExampleViewHolder>()  {
 
@@ -19,17 +25,23 @@ class ItemAdapter(val listaItem: List<Item>) : RecyclerView.Adapter<ItemAdapter.
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = listaItem[position]
 
-        holder.textViewNome.text = "Bruno Moreira"
-        holder.textViewNrRefeicoes.text = currentItem.numero.toString() + " refeições"
+        holder.textViewNome.text = ("Bruno Moreira")
+        holder.textViewNrRefeicoes.text = (currentItem.numero + " refeições")
         holder.textViewStock.text = currentItem.stock
 
-        //alterar para entrar no UPDATE item !!!!!!!!!!!!!!!!!!!!!!!!!!
-//        holder.itemView.setOnClickListener{ v ->
-//            val context = v.context
-//            val intent = Intent(context, DetalhesCliente::class.java)
-//            intent.putExtra(DetalhesCliente.ARG_ITEM_ID, currentCliente.id)
-//            context.startActivity(intent)
-//        }
+        holder.itemView.setOnClickListener{
+
+            val bundle = Bundle()
+            bundle.putString("itemId", currentItem.id)
+            val fragment = DetalhesItemFragment()
+            fragment.arguments = bundle
+
+            val manager: FragmentManager = (it.context as AppCompatActivity).supportFragmentManager
+            manager.beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,3 +50,4 @@ class ItemAdapter(val listaItem: List<Item>) : RecyclerView.Adapter<ItemAdapter.
         val textViewStock: TextView = itemView.findViewById(R.id.textViewStock)
     }
 }
+

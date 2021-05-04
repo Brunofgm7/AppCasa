@@ -32,11 +32,11 @@ class RestJuFragment : Fragment() {
         botaoAdicionarItem = view.findViewById(R.id.botaoAdicionarItem)
         botaoAdicionarItem.setOnClickListener {
             mudarFragment(adicionarItemFragment)
-            listaFiltradaItem.clear()
         }
 
         recyclerView = view.findViewById(R.id.recyclerViewItensJu)
 
+        listaFiltradaItem.clear()
         carregarItens()
 
         return view

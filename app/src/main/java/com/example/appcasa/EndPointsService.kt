@@ -24,5 +24,30 @@ interface EndPointsService {
     @GET("/api/item")
     fun getItem(): Call<List<Item>>
 
+    @GET("/api/item/{id}")
+    fun getItem(@Path("id") id: String): Call<List<Item>>
+
+    @FormUrlEncoded
+    @POST("/api/item")
+    fun addItem(
+        @Field("name") name: String,
+        @Field("numero") numeroRefeicoes: String,
+        @Field("stock") stock: String,
+        @Field("notas") notas: String,
+    ): Call<AddItemResponse>
+
+    @FormUrlEncoded
+    @POST("/api/item/{id}")
+    fun updateItem(
+            @Path("id") id: String,
+            @Field("name") name: String,
+            @Field("numero") numeroRefeicoes: String,
+            @Field("stock") stock: String,
+            @Field("notas") notas: String,
+    ): Call<AddItemResponse>
+
+    @DELETE("/api/item/{id}")
+    fun deleteItem(@Path("id") id: String): Call<Unit>
+
 
 }

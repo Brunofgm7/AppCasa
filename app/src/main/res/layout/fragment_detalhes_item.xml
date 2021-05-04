@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdicionarItemFragment">
-
+    tools:context=".DetalhesItemFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -24,15 +23,15 @@
             android:id="@+id/textViewFormulario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="left"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="Formulário:"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"/>
+            android:textSize="25dp"/>
 
         <EditText
-            android:id="@+id/editTextNrRefeicoes"
+            android:id="@+id/TextNrRefeicoes"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -46,7 +45,7 @@
             android:textColor="#FFFFFF" />
 
         <EditText
-            android:id="@+id/editTextStock"
+            android:id="@+id/TextStock"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -60,7 +59,7 @@
             android:hint="Stock" />
 
         <EditText
-            android:id="@+id/editTextNotas"
+            android:id="@+id/TextNotas"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -74,15 +73,26 @@
             android:hint="Notas" />
 
         <android.widget.Button
-            android:id="@+id/botaoSubmeter"
-            android:layout_width="280dp"
+            android:id="@+id/botaoEditar"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botaolaranja"
             android:textColor="#FFFFFF"
+            android:text="Editar" />
 
-            android:text="Submeter" />
+        <android.widget.Button
+            android:id="@+id/botaoApagar"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/botaolaranja"
+            android:textColor="#FFFFFF"
+            android:text="Apagar" />
 
     </androidx.cardview.widget.CardView>
 

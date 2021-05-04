@@ -15,7 +15,6 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
 
     lateinit var loginFragment: LoginFragment
-    lateinit var registoFragment: RegistoFragment
     lateinit var restaurantesFragment: RestaurantesFragment
     private var backPressedTime: Long = 0
     lateinit var backToast: Toast
