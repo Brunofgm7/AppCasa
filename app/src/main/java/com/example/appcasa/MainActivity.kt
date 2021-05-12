@@ -1,6 +1,7 @@
 package com.example.appcasa
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -28,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back_button)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.black)))
-//        supportActionBar?.title = "OLA TESTE"
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
@@ -38,26 +37,31 @@ class MainActivity : AppCompatActivity() {
 
         val token = getSharedPreferences("token", MODE_PRIVATE).getString("token", null)
 
-        if(token == "") {
-            mudarFragment(loginFragment)
-        } else {
+        when {
+            token == "" -> {
+                mudarFragment(loginFragment)
+            }
+            token.isNullOrEmpty() -> {
 
-            val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
-            val requestCall = endPointsService.checkToken(token!!)
+            }
+            else -> {
+                val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
+                val requestCall = endPointsService.checkToken(token!!)
 
-            requestCall.enqueue(object: Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    if(response.isSuccessful) {
-                        mudarFragment(restaurantesFragment)
-                    } else {
-                        mudarFragment(loginFragment)
+                requestCall.enqueue(object: Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if(response.isSuccessful) {
+                            mudarFragment(restaurantesFragment)
+                        } else {
+                            mudarFragment(loginFragment)
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Toast.makeText(this@MainActivity,"Erro a verificar o token: $t", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Toast.makeText(this@MainActivity,"Erro a verificar o token: $t", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
         }
     }
 
