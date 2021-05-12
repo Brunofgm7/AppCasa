@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 class RestaurantesFragment : Fragment() {
 
     lateinit var botaoBaixaDoPorto: RelativeLayout
-    lateinit var botaoTerco: Button
-    lateinit var botaoHospital: Button
+    lateinit var botaoTerco: RelativeLayout
+    lateinit var botaoHospital: RelativeLayout
     lateinit var restBaixaFragment: RestBaixaFragment
     lateinit var restTercoFragment: RestTercoFragment
     lateinit var restHospitalFragment: RestJuFragment

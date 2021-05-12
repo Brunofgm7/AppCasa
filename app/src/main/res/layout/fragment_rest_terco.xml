@@ -20,9 +20,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/botao_perfil"
+        android:background="@drawable/botao_laranja_redondo"
         android:text="+"
         android:textColor="@color/white"
-        android:textSize="60dp" />
+        android:textSize="60sp" />
 
 </FrameLayout>
