@@ -1,9 +1,7 @@
 package com.example.appcasa
 
-import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,14 +22,41 @@ class AdicionarItemFragment : Fragment() {
     lateinit var editTextStock: EditText
     lateinit var editTextNotas: EditText
     lateinit var botaoSubmeter: Button
+    lateinit var layoutAdicionarItem: ConstraintLayout
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_adicionar_item, container, false)
 
+        //toolbar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.show()
+        actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setBackgroundDrawable(null)
+
+        layoutAdicionarItem = view.findViewById(R.id.layoutAdicionarItem)
         editTextNrRefeicoes = view.findViewById(R.id.editTextNrRefeicoes)
         editTextStock = view.findViewById(R.id.editTextStock)
         editTextNotas = view.findViewById(R.id.editTextNotas)
+
+        //nome do restaurante
+        val name = activity?.getSharedPreferences("restaurante", AppCompatActivity.MODE_PRIVATE)
+            ?.getString("restaurante", null)
+
+        //mudar background dependendo do restaurante
+        when {
+            name.toString() == "Terço" -> {
+                layoutAdicionarItem.setBackgroundResource(R.drawable.azulejo_blurred_mobile)
+            }
+            name.toString() == "Baixa" -> {
+                layoutAdicionarItem.setBackgroundResource(R.drawable.porto_blurred_mobile)
+            }
+            name.toString() == "Ju" -> {
+                layoutAdicionarItem.setBackgroundResource(R.drawable.hospital_blurred_mobile)
+            }
+        }
 
         botaoSubmeter = view.findViewById(R.id.botaoSubmeter)
         botaoSubmeter.setOnClickListener {
@@ -45,9 +72,11 @@ class AdicionarItemFragment : Fragment() {
     private fun adicionarItem(nrRefeicoes: String, stock: String, notas: String) {
         if(nrRefeicoes.isNotEmpty()){
 
-            val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
+            //nome do restaurante
             val name = activity?.getSharedPreferences("restaurante", AppCompatActivity.MODE_PRIVATE)
                 ?.getString("restaurante", null)
+
+            val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
             val requestCall = endPointsService.addItem(name.toString(), nrRefeicoes, stock, notas)
 
             requestCall.enqueue(object : Callback<AddItemResponse> {

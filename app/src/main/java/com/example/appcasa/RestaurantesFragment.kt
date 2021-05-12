@@ -3,12 +3,14 @@ package com.example.appcasa
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+
 
 class RestaurantesFragment : Fragment() {
 
@@ -23,6 +25,8 @@ class RestaurantesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_restaurantes, container, false)
+
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
         restBaixaFragment = RestBaixaFragment()
         restTercoFragment = RestTercoFragment()

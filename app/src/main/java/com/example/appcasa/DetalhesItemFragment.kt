@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +22,7 @@ class DetalhesItemFragment : Fragment() {
     lateinit var TextNotas: EditText
     lateinit var botaoEditar: Button
     lateinit var botaoApagar: Button
+    lateinit var layoutDetalhesItem: ConstraintLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -31,6 +33,25 @@ class DetalhesItemFragment : Fragment() {
             val itemId = bundle.get("itemId").toString()
 
             carregarItem(itemId)
+
+            layoutDetalhesItem = view.findViewById(R.id.layoutDetalhesItem)
+
+            //nome do restaurante
+            val name = activity?.getSharedPreferences("restaurante", AppCompatActivity.MODE_PRIVATE)
+                ?.getString("restaurante", null)
+
+            //mudar background dependendo do restaurante
+            when {
+                name.toString() == "Terço" -> {
+                    layoutDetalhesItem.setBackgroundResource(R.drawable.azulejo_blurred_mobile)
+                }
+                name.toString() == "Baixa" -> {
+                    layoutDetalhesItem.setBackgroundResource(R.drawable.porto_blurred_mobile)
+                }
+                name.toString() == "Ju" -> {
+                    layoutDetalhesItem.setBackgroundResource(R.drawable.hospital_blurred_mobile)
+                }
+            }
 
             TextNrRefeicoes = view.findViewById(R.id.TextNrRefeicoes)
             TextStock = view.findViewById(R.id.TextStock)

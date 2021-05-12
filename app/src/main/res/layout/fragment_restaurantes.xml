@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +11,6 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
         android:background="@drawable/botao_branco_restaurantes">
 
         <ImageView
@@ -21,8 +20,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/baixa_porto"
-            android:background="@drawable/rounded"/>
+            android:background="@drawable/rounded"
+            android:src="@drawable/baixa_porto" />
 
         <TextView
             android:id="@+id/textViewBaixaPorto"
@@ -52,26 +51,26 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/botao_branco_restaurantes"
         android:paddingStart="100dp"
         android:paddingEnd="50dp"
-        android:background="@drawable/botao_branco_restaurantes"
         android:text="Terço"
         android:textAllCaps="false"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <android.widget.Button
         android:id="@+id/botaoHospital"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/botao_branco_restaurantes"
         android:paddingStart="100dp"
         android:paddingEnd="50dp"
-        android:background="@drawable/botao_branco_restaurantes"
         android:text="Hospital de Joaquim Urbano"
         android:textAllCaps="false"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <android.widget.Button
         android:id="@+id/botaoPerfil"
@@ -80,7 +79,27 @@
         android:layout_gravity="right|top"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/botao_redondo"
-        android:text="Perfil"
+        android:background="@drawable/botao_perfil"
         android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurantes"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="30dp"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/textViewSelecione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione o mais próximo a ti."
+        android:layout_marginTop="210dp"
+        android:layout_marginStart="30dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"/>
+
 </FrameLayout>

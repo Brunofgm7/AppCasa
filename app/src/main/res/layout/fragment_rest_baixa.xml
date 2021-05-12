@@ -9,6 +9,8 @@
         android:id="@+id/recyclerViewItensBaixa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="80dp"
+        android:background="@drawable/porto_blurred_mobile"
         tools:listitem="@layout/recyclerview_row" />
 
     <android.widget.Button
@@ -18,7 +20,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/botao_redondo"
+        android:background="@drawable/botao_perfil"
         android:text="+"
         android:textColor="@color/white"
         android:textSize="60dp" />

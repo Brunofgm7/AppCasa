@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdicionarItemFragment">
+    tools:context=".AdicionarItemFragment"
+    android:id="@+id/layoutAdicionarItem">
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#17BBD1"
+        android:backgroundTint="#E621AEFF"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +31,7 @@
             android:layout_marginTop="30dp"
             android:text="Formulário:"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/editTextNrRefeicoes"
@@ -39,39 +41,39 @@
             android:layout_marginTop="90dp"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:textColorHint="#FFFFFF"
             android:hint="Nº de refeições"
             android:inputType="number"
             android:paddingBottom="20dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <EditText
             android:id="@+id/editTextStock"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginStart="30dp"
             android:layout_marginTop="150dp"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="Stock"
+            android:inputType="text"
             android:paddingBottom="20dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            android:inputType="text"
-            android:hint="Stock" />
+            android:textColorHint="#FFFFFF" />
 
         <EditText
             android:id="@+id/editTextNotas"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
             android:layout_marginStart="30dp"
             android:layout_marginTop="220dp"
-            android:paddingBottom="50dp"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="Notas"
             android:inputType="text"
-            android:hint="Notas" />
+            android:paddingBottom="50dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <android.widget.Button
             android:id="@+id/botaoSubmeter"
@@ -80,9 +82,9 @@
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botaolaranja"
-            android:textColor="#FFFFFF"
+            android:text="Submeter"
 
-            android:text="Submeter" />
+            android:textColor="#FFFFFF" />
 
     </androidx.cardview.widget.CardView>
 

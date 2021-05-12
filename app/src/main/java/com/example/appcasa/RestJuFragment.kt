@@ -1,12 +1,16 @@
 package com.example.appcasa
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -22,10 +26,20 @@ class RestJuFragment : Fragment() {
     lateinit var botaoAdicionarItem: Button
     lateinit var adicionarItemFragment: AdicionarItemFragment
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_rest_ju, container, false)
+
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.show()
+        actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        val colorDrawable = ColorDrawable(Color.parseColor("#21AEFF"))
+        actionBar?.setBackgroundDrawable(colorDrawable)
+
+        val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)
+        val textViewNomeFragment = toolbar.findViewById<TextView>(R.id.textViewNomeFragment)
+        textViewNomeFragment.text = "Hospital de Joaquim Urbano"
 
         adicionarItemFragment = AdicionarItemFragment()
 

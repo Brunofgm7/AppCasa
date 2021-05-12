@@ -1,16 +1,14 @@
 package com.example.appcasa
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ResourceCursorAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,9 +25,16 @@ class MainActivity : AppCompatActivity() {
         loginFragment = LoginFragment()
         verificarToken()
 
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_button)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.black)))
+//        supportActionBar?.title = "OLA TESTE"
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
     }
 
-    fun verificarToken() {
+    private fun verificarToken() {
 
         val token = getSharedPreferences("token", MODE_PRIVATE).getString("token", null)
 
@@ -65,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        backToast = Toast.makeText(this, "Prima BACK novamente para sair.", Toast.LENGTH_SHORT)
         when {
             supportFragmentManager.backStackEntryCount > 0 -> {
                 supportFragmentManager.popBackStack()
@@ -76,10 +80,9 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             else -> {
-                backToast.show()
+                Toast.makeText(this, "Prima BACK novamente para sair.", Toast.LENGTH_SHORT).show()
             }
         }
         backPressedTime = System.currentTimeMillis()
     }
 }
-
