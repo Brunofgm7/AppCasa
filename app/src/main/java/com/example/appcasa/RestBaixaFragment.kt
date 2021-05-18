@@ -10,13 +10,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class RestBaixaFragment : Fragment() {
 
@@ -38,13 +38,16 @@ class RestBaixaFragment : Fragment() {
         val colorDrawable = ColorDrawable(Color.parseColor("#21AEFF"))
         actionBar?.setBackgroundDrawable(colorDrawable)
 
-
         val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)
         val textViewNomeFragment = toolbar.findViewById<TextView>(R.id.textViewNomeFragment)
+        textViewNomeFragment.isVisible = true
         textViewNomeFragment.text = "Baixa do Porto"
 
-        adicionarItemFragment = AdicionarItemFragment()
+        toolbar.setNavigationOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
+        adicionarItemFragment = AdicionarItemFragment()
         botaoAdicionarItem = view.findViewById(R.id.botaoAdicionarItem)
         botaoAdicionarItem.setOnClickListener {
             mudarFragment(adicionarItemFragment)
@@ -53,6 +56,7 @@ class RestBaixaFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewItensBaixa)
 
         listaFiltradaItem.clear()
+
         carregarItens()
 
         return view

@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -40,7 +41,12 @@ class RestTercoFragment : Fragment() {
 
         val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)
         val textViewNomeFragment = toolbar.findViewById<TextView>(R.id.textViewNomeFragment)
+        textViewNomeFragment.isVisible = true
         textViewNomeFragment.text = "Terço"
+
+        toolbar.setNavigationOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
         adicionarItemFragment = AdicionarItemFragment()
 

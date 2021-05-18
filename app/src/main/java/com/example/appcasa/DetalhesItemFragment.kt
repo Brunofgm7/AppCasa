@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +37,16 @@ class DetalhesItemFragment : Fragment() {
             carregarItem(itemId)
 
             layoutDetalhesItem = view.findViewById(R.id.layoutDetalhesItem)
+
+            val actionBar = (activity as AppCompatActivity).supportActionBar
+            actionBar?.show()
+            actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
+            actionBar?.setDisplayHomeAsUpEnabled(true)
+            actionBar?.setBackgroundDrawable(null)
+
+            val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)
+            val textViewNomeFragment = toolbar.findViewById<TextView>(R.id.textViewNomeFragment)
+            textViewNomeFragment.isVisible = false
 
             //nome do restaurante
             val name = activity?.getSharedPreferences("restaurante", AppCompatActivity.MODE_PRIVATE)

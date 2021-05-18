@@ -2,10 +2,9 @@ package com.example.appcasa
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +25,7 @@ class RestaurantesFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_restaurantes, container, false)
 
+        //esconder a action bar
         (activity as AppCompatActivity).supportActionBar?.hide()
 
         restBaixaFragment = RestBaixaFragment()

@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +37,10 @@ class AdicionarItemFragment : Fragment() {
         actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setBackgroundDrawable(null)
+
+        val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)
+        val textViewNomeFragment = toolbar.findViewById<TextView>(R.id.textViewNomeFragment)
+        textViewNomeFragment.isVisible = false
 
         layoutAdicionarItem = view.findViewById(R.id.layoutAdicionarItem)
         editTextNrRefeicoes = view.findViewById(R.id.editTextNrRefeicoes)

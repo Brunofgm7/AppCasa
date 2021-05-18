@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         restaurantesFragment = RestaurantesFragment()
         loginFragment = LoginFragment()
+        
         verificarToken()
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
@@ -37,31 +38,26 @@ class MainActivity : AppCompatActivity() {
 
         val token = getSharedPreferences("token", MODE_PRIVATE).getString("token", null)
 
-        when {
-            token == "" -> {
+        if (token.isNullOrEmpty()){
                 mudarFragment(loginFragment)
-            }
-            token.isNullOrEmpty() -> {
+        } else {
+            val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
+            val requestCall = endPointsService.checkToken(token)
 
-            }
-            else -> {
-                val endPointsService = ServiceBuilder.buildService(EndPointsService::class.java)
-                val requestCall = endPointsService.checkToken(token!!)
-
-                requestCall.enqueue(object: Callback<ResponseBody> {
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        if(response.isSuccessful) {
-                            mudarFragment(restaurantesFragment)
-                        } else {
-                            mudarFragment(loginFragment)
-                        }
+            requestCall.enqueue(object: Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    if(response.isSuccessful) {
+                        mudarFragment(restaurantesFragment)
+                    } else {
+                        mudarFragment(loginFragment)
                     }
+                }
 
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Toast.makeText(this@MainActivity,"Erro a verificar o token: $t", Toast.LENGTH_SHORT).show()
-                    }
-                })
-            }
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Toast.makeText(this@MainActivity,"Erro a verificar o token: $t", Toast.LENGTH_SHORT).show()
+                    mudarFragment(loginFragment)
+                }
+            })
         }
     }
 
