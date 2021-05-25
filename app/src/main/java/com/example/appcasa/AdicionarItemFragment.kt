@@ -34,8 +34,6 @@ class AdicionarItemFragment : Fragment() {
         //toolbar
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.show()
-        actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setBackgroundDrawable(null)
 
         val toolbar = (activity as AppCompatActivity).findViewById<androidx.appcompat.widget.Toolbar>(R.id.my_toolbar)

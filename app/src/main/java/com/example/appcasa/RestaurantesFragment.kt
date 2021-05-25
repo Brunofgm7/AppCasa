@@ -19,6 +19,7 @@ class RestaurantesFragment : Fragment() {
     lateinit var restBaixaFragment: RestBaixaFragment
     lateinit var restTercoFragment: RestTercoFragment
     lateinit var restHospitalFragment: RestJuFragment
+    lateinit var perfilFragment: PerfilFragment
     lateinit var botaoPerfil: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,6 +32,7 @@ class RestaurantesFragment : Fragment() {
         restBaixaFragment = RestBaixaFragment()
         restTercoFragment = RestTercoFragment()
         restHospitalFragment = RestJuFragment()
+        perfilFragment = PerfilFragment()
 
         botaoBaixaDoPorto = view.findViewById(R.id.botaoBaixaDoPorto)
         botaoBaixaDoPorto.setOnClickListener {
@@ -55,7 +57,7 @@ class RestaurantesFragment : Fragment() {
 
         botaoPerfil = view.findViewById(R.id.botaoPerfil)
         botaoPerfil.setOnClickListener {
-
+            mudarFragment(perfilFragment)
         }
 
         return view

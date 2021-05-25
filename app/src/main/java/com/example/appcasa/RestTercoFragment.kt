@@ -34,8 +34,6 @@ class RestTercoFragment : Fragment() {
 
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.show()
-        actionBar?.setHomeAsUpIndicator(R.drawable.back_button)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
         val colorDrawable = ColorDrawable(Color.parseColor("#21AEFF"))
         actionBar?.setBackgroundDrawable(colorDrawable)
 

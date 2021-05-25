@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         verificarToken()
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_button)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
