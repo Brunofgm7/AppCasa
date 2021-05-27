@@ -25,6 +25,7 @@ class LoginFragment : Fragment() {
     lateinit var botaoLogin: Button
     lateinit var botaoForgotYourPassword : TextView
     lateinit var restaurantesFragment: RestaurantesFragment
+    lateinit var registoFragment: RegistoFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -36,13 +37,10 @@ class LoginFragment : Fragment() {
         botaoLogin = view.findViewById(R.id.botaoLogin)
 //        botaoForgotYourPassword = view.findViewById(R.id.botaoForgotYourPassword)
         restaurantesFragment = RestaurantesFragment()
+        registoFragment = RegistoFragment()
 
         botaoAindaNaoTemConta.setOnClickListener {
-            val registoFragment = RegistoFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, registoFragment)
-                .addToBackStack(null)
-                .commit()
+           mudarFragment(registoFragment)
         }
 
         botaoLogin.setOnClickListener {
@@ -86,7 +84,6 @@ class LoginFragment : Fragment() {
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     Toast.makeText(activity, "Erro$t", Toast.LENGTH_SHORT).show()
                 }
-
             })
 
         } else {

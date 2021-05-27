@@ -1,12 +1,14 @@
 package com.example.appcasa
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
@@ -21,6 +23,7 @@ class RestaurantesFragment : Fragment() {
     lateinit var restHospitalFragment: RestJuFragment
     lateinit var perfilFragment: PerfilFragment
     lateinit var botaoPerfil: Button
+    lateinit var loginFragment: LoginFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -33,24 +36,25 @@ class RestaurantesFragment : Fragment() {
         restTercoFragment = RestTercoFragment()
         restHospitalFragment = RestJuFragment()
         perfilFragment = PerfilFragment()
+        loginFragment = LoginFragment()
 
         botaoBaixaDoPorto = view.findViewById(R.id.botaoBaixaDoPorto)
         botaoBaixaDoPorto.setOnClickListener {
-            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", MODE_PRIVATE)
             preferences.edit().putString("restaurante", "Baixa").apply()
             mudarFragment(restBaixaFragment)
         }
 
         botaoTerco = view.findViewById(R.id.botaoTerco)
         botaoTerco.setOnClickListener {
-            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", MODE_PRIVATE)
             preferences.edit().putString("restaurante", "Terço").apply()
             mudarFragment(restTercoFragment)
         }
 
         botaoHospital = view.findViewById(R.id.botaoHospital)
         botaoHospital.setOnClickListener {
-            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", Context.MODE_PRIVATE)
+            val preferences: SharedPreferences = requireActivity().getSharedPreferences("restaurante", MODE_PRIVATE)
             preferences.edit().putString("restaurante", "Ju").apply()
             mudarFragment(restHospitalFragment)
         }

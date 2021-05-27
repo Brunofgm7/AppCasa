@@ -42,11 +42,7 @@ class RegistoFragment : Fragment() {
 
         botaoJaTemConta = view.findViewById(R.id.botaoJaTemConta)
         botaoJaTemConta.setOnClickListener {
-            val loginFragment = LoginFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, loginFragment)
-                .addToBackStack(null)
-                .commit()
+            mudarFragment(loginFragment)
         }
 
         botaoRegisto.setOnClickListener {
@@ -91,8 +87,9 @@ class RegistoFragment : Fragment() {
     }
 
     private fun mudarFragment(fragment: Fragment) {
-        requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, fragment)
-                .commit()
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
     }
 }

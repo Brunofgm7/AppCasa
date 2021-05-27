@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var loginFragment: LoginFragment
     lateinit var restaurantesFragment: RestaurantesFragment
     private var backPressedTime: Long = 0
-    lateinit var backToast: Toast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.popBackStack()
             }
             backPressedTime + 2000 > System.currentTimeMillis() -> {
-                backToast.cancel()
                 super.onBackPressed()
                 return
             }
