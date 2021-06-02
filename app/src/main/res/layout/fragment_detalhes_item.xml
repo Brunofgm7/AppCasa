@@ -74,22 +74,22 @@
             android:hint="Notas" />
 
         <android.widget.Button
-            android:id="@+id/botaoEditar"
+            android:id="@+id/botaoGuardar"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="20dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botaolaranja"
             android:textColor="#FFFFFF"
-            android:text="Editar" />
+            android:text="Guardar" />
 
         <android.widget.Button
             android:id="@+id/botaoApagar"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botaolaranja"
             android:textColor="#FFFFFF"

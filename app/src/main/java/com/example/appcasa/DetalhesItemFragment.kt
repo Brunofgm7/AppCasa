@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -22,7 +23,7 @@ class DetalhesItemFragment : Fragment() {
     lateinit var TextNrRefeicoes: EditText
     lateinit var TextStock: EditText
     lateinit var TextNotas: EditText
-    lateinit var botaoEditar: Button
+    lateinit var botaoGuardar: Button
     lateinit var botaoApagar: Button
     lateinit var layoutDetalhesItem: ConstraintLayout
 
@@ -66,14 +67,24 @@ class DetalhesItemFragment : Fragment() {
             TextNrRefeicoes = view.findViewById(R.id.TextNrRefeicoes)
             TextStock = view.findViewById(R.id.TextStock)
             TextNotas = view.findViewById(R.id.TextNotas)
-            botaoEditar = view.findViewById(R.id.botaoEditar)
-            botaoEditar.setOnClickListener {
+            botaoGuardar = view.findViewById(R.id.botaoGuardar)
+            botaoGuardar.setOnClickListener {
                 updateItem(itemId)
             }
 
             botaoApagar = view.findViewById(R.id.botaoApagar)
             botaoApagar.setOnClickListener {
-                apagarItem(itemId)
+                val builder = AlertDialog.Builder(activity as AppCompatActivity)
+                builder.setMessage("Tem a certeza que deseja apagar?")
+                    .setCancelable(false)
+                    .setPositiveButton("Sim") { _, _ ->
+                        apagarItem(itemId)
+                    }
+                    .setNegativeButton("Não") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                val alert = builder.create()
+                alert.show()
             }
         }
 
