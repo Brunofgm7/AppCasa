@@ -6,6 +6,7 @@ var cors = require('cors');
 var loginController = require('../controllers/authenticate-controller');
 var registerController = require('../controllers/register-controller');
 var itemController = require('../controllers/items-controller');
+var profileController = require('../controllers/profile-controller');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport')
@@ -59,6 +60,10 @@ router.post('/api/item/:itemId', itemController.updateItem);
 //DELETE
 // Delete item (remove button)
 router.delete('/api/item/:itemId', itemController.removeItem);
+
+//Profile
+// READ
+router.get('/api/profile/:email', profileController.profileInfo);
 
 // Middleware authentication
 router.get('/api/dashboards', withAuth, function(req, res) {

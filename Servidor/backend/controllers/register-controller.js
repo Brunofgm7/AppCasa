@@ -21,7 +21,6 @@ module.exports.register = function(req, res) {
                 "phone": req.body.phone
             }
         
-
     //Verify information
     console.log("Users to register: ", users);
 

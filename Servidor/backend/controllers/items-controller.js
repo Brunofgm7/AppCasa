@@ -46,7 +46,6 @@ module.exports.itemTable = function(req, res, next) {
             console.log(error)
         } 
         else {
-
             console.log("Database results: ", results);
             res.json(
                 results
@@ -65,11 +64,11 @@ module.exports.itemInfo = function(req, res, next) {
     db.query('SELECT * FROM item WHERE id = ?', [id.itemId], function (error, results, fields) {
     if(error) {
             console.log("There are some error with query");
-        } 
+        }
         else {
             res.json(
-                results                
-            );        
+                results
+            );
         }
     });
 }

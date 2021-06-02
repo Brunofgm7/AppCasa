@@ -1,17 +1,13 @@
 package com.example.appcasa
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-
 
 class RestaurantesFragment : Fragment() {
 
