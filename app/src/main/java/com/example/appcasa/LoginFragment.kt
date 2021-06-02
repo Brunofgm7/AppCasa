@@ -73,6 +73,9 @@ class LoginFragment : Fragment() {
                                 val preferences: SharedPreferences = activity!!.getSharedPreferences("token", MODE_PRIVATE)
                                 preferences.edit().putString("token", "token="+loginResponse.getToken()).apply()
 
+                                val emailUser: SharedPreferences = activity!!.getSharedPreferences("email", MODE_PRIVATE)
+                                emailUser.edit().putString("email", email).apply()
+
                                 mudarFragment(restaurantesFragment)
                             }
                         }
