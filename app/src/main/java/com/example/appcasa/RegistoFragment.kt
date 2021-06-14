@@ -22,7 +22,7 @@ class RegistoFragment : Fragment() {
     lateinit var botaoJaTemConta: Button
     lateinit var textNicknameRegisto: EditText
     lateinit var textEmailRegisto: EditText
-    lateinit var textPasswordRegisto: TextInputLayout
+    lateinit var textPasswordRegisto: TextInputEditText
     lateinit var textResidenceRegisto: EditText
     lateinit var textPhoneRegisto: EditText
     lateinit var loginFragment: LoginFragment
@@ -48,7 +48,7 @@ class RegistoFragment : Fragment() {
         botaoRegisto.setOnClickListener {
             val nickname: String = textNicknameRegisto.text.toString()
             val email: String = textEmailRegisto.text.toString()
-            val password: String = textPasswordRegisto.toString()
+            val password: String = textPasswordRegisto.text.toString()
             val residence: String = textResidenceRegisto.text.toString()
             val phone: String = textPhoneRegisto.text.toString()
             registo(nickname, email, password, residence, phone)
@@ -64,19 +64,27 @@ class RegistoFragment : Fragment() {
             val endPointsService = ServiceBuilder.buildService((EndPointsService::class.java))
             val requestCall = endPointsService.addUser(newUser)
 
-            requestCall.enqueue(object : Callback<User> {
+            requestCall.enqueue(object : Callback<RegistoResponse> {
 
-                override fun onResponse(call: Call<User>, response: Response<User>) {
+                override fun onResponse(call: Call<RegistoResponse>, response: Response<RegistoResponse>) {
                     if (response.isSuccessful){
-                        Toast.makeText(activity, "Adicionado com sucesso", Toast.LENGTH_SHORT).show()
-                        //trocar de fragment
-                        mudarFragment(loginFragment)
+                        val registoResponse = response.body()
+                        if (registoResponse != null) {
+                            if(!registoResponse.getStatus()) { //status false
+                                Toast.makeText(activity, registoResponse.getMessage(), Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(activity, registoResponse.getMessage(), Toast.LENGTH_SHORT).show()
+
+                                //trocar de fragment
+                                mudarFragment(loginFragment)
+                            }
+                        }
                     } else {
                         Toast.makeText(activity, "Erro a adicionar o user", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<User>, t: Throwable) {
+                override fun onFailure(call: Call<RegistoResponse>, t: Throwable) {
                     Toast.makeText(activity, "Erro$t", Toast.LENGTH_SHORT).show()
                 }
             })

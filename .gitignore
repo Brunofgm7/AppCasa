@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/Servidor/frontend/node_modules
+/Servidor/backend/node_modules

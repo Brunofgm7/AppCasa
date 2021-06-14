@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import ItemForm from './ItemForm';
+import '../../styles/itemAdd.css';
+import '../../styles/App.css';
+import '../../styles/index.css';
+import '../../styles/itemForm.css';
 
 class ItemAdd extends Component {
     constructor(props) {

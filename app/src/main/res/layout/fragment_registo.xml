@@ -54,7 +54,6 @@
         app:theme="@style/textInputLayoutColors" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textSenhaRegisto"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|start"
@@ -70,6 +69,7 @@
         app:theme="@style/textInputLayoutColors">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textSenhaRegisto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"

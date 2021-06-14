@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../styles/App.css';
+import '../styles/index.css';
+import '../styles/background.css';
+import '../styles/forgotPassword.css';
 //import Cookies from 'js-cookie';
 import 'antd/dist/antd.css';
 import '../styles/index.css';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import Background from "../assets/images/blurporto.png";
 
 class ForgotPassword extends Component {
 constructor(props) {
@@ -62,7 +66,7 @@ constructor(props) {
       }
       })
       .catch(error => {
-        console.log(error.data)
+        console.log("teste", error)
       })
     }
   }
@@ -78,64 +82,68 @@ constructor(props) {
   render() {
     const {serverMsg, showNullError, showError} = this.state;
     return (
-      <div className="box">
-        <p className="title">Reset Password</p>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          //onFinish={onFinish}
-          >
-          <div className="mb-4 text-center">
-          <span className="">No worries! Just enter your email and we'll send you a reset password link.</span>
-          </div>
-          <Form.Item
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Email!',
-              },
-            ]}
-          >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} type="text" name="email" placeholder="Email"  value={this.state.email} onChange={this.handleChange}/>
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.handleSubmit}>
-              Reset Password
-            </Button>
-          </Form.Item>
-          {showNullError && (
-            <div>
-              <p>
-                Please insert a valid email.
-              </p>
+      <div className="backgroundContainer">
+        <img src={Background} className="background" alt="Background"/> 
+        <div className="box-forgot">
+          <p className="titleReset">Recuperar senha</p>
+          <Form
+            name="normal_login"
+            className="login-form-forgot"
+            initialValues={{
+              remember: true,
+            }}
+            //onFinish={onFinish}
+            >
+            <div className="mb-4 text-center">
+              <span className="texto">Sem problema! Insira o seu e-mail e enviaremos um link para redefinir a senha.</span>
             </div>
-          )}
-          {showError && (
-            <div>
-              <p>
-                That email address isn't recongnized. Please try again or register for a new account.
-              </p>
-              <Link to={`/register`}>
-                <Button type="primary" htmlType="submit" className="login-form-button">Register</Button>
-              </Link>
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your Email!',
+                },
+              ]}
+            >
+            <Input className="inputMail" prefix={<UserOutlined className="site-form-item-icon" />} type="text" name="email" placeholder="Email"  value={this.state.email} onChange={this.handleChange}/>
+            </Form.Item>
+            <Form.Item>
+              <Button htmlType="submit" className="login-form-button-reset" onClick={this.handleSubmit}>
+                Recuperar senha
+              </Button>
+            </Form.Item>
+            {showNullError && (
+              <div>
+                <p>
+                  Please insert a valid email.
+                </p>
+              </div>
+            )}
+            {showError && (
+              <div>
+                <p>
+                  That email address isn't recongnized. Please try again or register for a new account.
+                </p>
+                <Link to={`/register`}>
+                  <Button type="primary" htmlType="submit" className="login-form-button">Register</Button>
+                </Link>
+              </div>
+            )}
+            {serverMsg === 'Recovery email sent' && (
+              <div className="message">
+                <p>Por favor consulte o seu email!.</p>
+              </div>
+            )}
+
+            <div className="text-center">
+              <span>Lembrou-se?&nbsp;</span>
+              <a className="" href="http://localhost:5000/login">
+                  Login
+              </a>
             </div>
-          )}
-          {serverMsg === 'Recovery email sent' && (
-            <div>
-              <p>Please check your email.</p>
-            </div>
-          )}
-          <div className="text-center">
-            <span>Just remembered?</span>
-            <p><a className="" href="http://localhost:5000/login">
-                Sign In
-            </a></p>
-          </div>
-        </Form>
+          </Form>
+        </div>
       </div>
     );
   };

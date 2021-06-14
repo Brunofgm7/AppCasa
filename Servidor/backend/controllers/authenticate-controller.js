@@ -249,6 +249,7 @@ module.exports.updatepassword = function(req, res, next) {
                     .then(() => {
                         console.log("Password updated")
                         res.json({
+                            status: true,
                             message: 'Password updated'
                         })
                         res.status(200)
@@ -256,6 +257,7 @@ module.exports.updatepassword = function(req, res, next) {
             } else {  
                 console.log("No users exists in DB to update")
                 res.json({
+                    status: false,
                     message: 'No users exists in DB to update'
                 })
                 res.status(404)

@@ -6,12 +6,12 @@ var cors = require('cors');
 var loginController = require('../controllers/authenticate-controller');
 var registerController = require('../controllers/register-controller');
 var itemController = require('../controllers/items-controller');
-var profileController = require('../controllers/profile-controller');
+var userController = require('../controllers/users-controller');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport')
 const withAuth = require('./middleware');
-
+ 
 //initialize passport        
 app.use(passport.initialize())
 //alters the request object and change the user value (id session/client cookie)    
@@ -61,9 +61,13 @@ router.post('/api/item/:itemId', itemController.updateItem);
 // Delete item (remove button)
 router.delete('/api/item/:itemId', itemController.removeItem);
 
+//-------------------USER-------------------
+
 //Profile
 // READ
-router.get('/api/profile/:email', profileController.profileInfo);
+router.get('/api/user/:email', userController.userInfo);
+
+//----------------------USER---------------------------
 
 // Middleware authentication
 router.get('/api/dashboards', withAuth, function(req, res) {
@@ -80,5 +84,3 @@ router.get('/checkToken', withAuth, function(req, res) {
 });
 
 module.exports = router;
-
- 

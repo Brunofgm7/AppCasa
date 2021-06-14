@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun login(email: String, password: String) {
-        if(email.isNotEmpty() && password.isNotEmpty()){
+        if(email.isNotEmpty() && password.isNotEmpty()) {
 
             val endPointsService = ServiceBuilder.buildService((EndPointsService::class.java))
             val requestCall = endPointsService.userLogin(email, password)

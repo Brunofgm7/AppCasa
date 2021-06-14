@@ -5,7 +5,9 @@ const connection = db.createConnection({
     database : 'backoffice_feralbyte',
     user     : 'root',
     password : 'admin',
-    port: 3306,
+    timezone : 'UTC+00:00',
+    port: 3306
+
 })
 
 module.exports = connection;

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';//
-import home from '../assets/images/home.png';
+import casa from '../assets/images/casa.png';
+import '../styles/home.css';
+import '../styles/index.css';
+import '../styles/background.css';
 
 export default class Home extends Component {
     constructor() {
@@ -22,13 +25,12 @@ export default class Home extends Component {
     
     render() {
       return (
-        <div className="container mt-3">
-          <div className="container-da-imagem">
-            <img src={home} alt="homeImage"></img>
+          <div className="backgroundContainer">
+            <div className="boxHome">
+                <img src={casa} alt="Casa logo." />
+                <p className="welcome"><b>Bem-vindo à <span className="textCasa">Casa</span>!</b></p>
+            </div>
           </div>
-          <h1>Welcome to my home page</h1>
-          <p>{this.state.message}</p>
-        </div>
       );
     }
   }

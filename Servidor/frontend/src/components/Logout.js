@@ -3,6 +3,9 @@ import Cookies from 'js-cookie';
 import { Redirect } from 'react-router-dom';
 import { Button } from 'antd';
 import '../styles/App.css';
+import '../styles/logout.css';
+import '../styles/index.css';
+import casa from "../assets/images/casa.png";
 
 class Logout extends Component {
       //Set default message
@@ -28,10 +31,11 @@ class Logout extends Component {
         return <Redirect to="/login" push={true} />;
       }
       return (
-        <div className="container">
-          <p>Are you sure you want to logout?</p>
-          <Button type="link" onClick={(e) => { this.logout(e); this.refreshPage();}}>Logout</Button>
-        </div> )
+        <div className="boxLogout">
+            <img src={casa}  alt="Casa logo."/>
+            <span className="textLogout">Deseja realizar Logout?</span>
+            <Button className="button-logout" type="link" onClick={(e) => { this.logout(e); this.refreshPage();}}>Logout</Button>
+        </div>)
     }
 }
 

@@ -21,17 +21,19 @@ module.exports.register = function(req, res) {
                 "phone": req.body.phone
             }
         
+
     //Verify information
-    console.log("Users to register: ", users);
+    console.log("Aqui!");
 
     //Database query to insert user
-    db.query('INSERT INTO user SET ?', users, function(error, results, fields){
+    var query = db.query('INSERT INTO user SET?', users, function(error, results){
+        console.log(query.sql);
         if(error) {
-            console.log(JSON.stringify(error));
             res.json({
                 status:false, 
                 message: 'There are some error with query'
             })
+            console.log(error)
         } else {
             res.json({
                 status:true, 
