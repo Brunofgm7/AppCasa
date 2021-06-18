@@ -30,7 +30,7 @@ module.exports.authenticate = function(req,res) {
             if(results.length > 0) {
                     
                 //Check if the password is correct
-                if(bcrypt.compare(password == results[0].password)) {
+                if(bcrypt.compare(password, results[0].password)) {
 
                     //Generate token that expires in 60m (modify as needed)
                     const token = jwt.sign({ email }, accessTokenSecret, { expiresIn: '60m' });
